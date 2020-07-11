@@ -1,0 +1,21 @@
+<br />
+
+<h3>Teachers <button (click)="addTeacher()" class="btn btn-primary">Add Teacher</button></h3>
+<hr color="tomato" />
+
+<table class="table" *ngIf="teachers.length > 0">
+  <tr>
+    <th>Name</th>
+    <th>Father</th>
+    <th>Qualification</th>
+    <th>DoB</th>
+  </tr>
+  <tr *ngFor="let teacher of teachers">
+    <td>{{teacher.name}}</td>
+    <td>{{teacher.fathername}}</td>
+    <td>{{teacher.qualification}}</td>
+    <td>{{teacher.dob}}</td>
+    <td><button (click)="deleteTeacher($event, teacher);" class="btn btn-primary"> Delete </button>
+
+  </tr>
+</table>

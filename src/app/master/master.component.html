@@ -1,0 +1,34 @@
+
+  <br />
+  <br />
+  <table class="table table-inverse"><tr><td width="40%">
+    <div width="75%">
+        <h4>Add Master</h4>
+  <form [formGroup]="myMForm" novalidate (submit)="saveMaster();">
+    <label>Create New:</label>
+    <select class="form-control" formControlName="type" (change)="loadData($event.target.value);">
+      <option *ngFor="let type of Types" value="{{type}}">{{type}}</option>
+    </select>
+    <label>Name:</label>
+    <input type="text" class="form-control" id="name" name="name" formControlName="name" placeholder="Name" />
+    <br />
+    <button type="submit" class="btn btn-primary">Add Master</button>
+  </form></div>
+</td><td width="60%">
+<div class="row">
+
+  <table class="table table-inverse table-bordered">
+    <tr><td colspan="4"><h4 *ngIf="mastertype" align="center">{{mastertype}}</h4></td></tr>
+    <tr *ngFor="let master of masters">
+      <td *ngIf="master.type === mastertype" width="60%">{{master.name}}</td>
+      <td *ngIf="master.type === mastertype" width="40%">
+        <button class="btn btn-primary" (click)="changeStatus($event, master);" [ngClass]="{
+        'btn-success':master.active === 'Active',
+        'btn-error':master.Active === 'Not Active'
+      }">{{master.active}}</button>
+        <button class="btn btn-warning" (click)="deleteMaster($event, master);">Delete</button>
+      </td>
+    </tr>
+  </table>
+  </div>
+</td></tr></table>

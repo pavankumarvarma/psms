@@ -1,0 +1,22 @@
+<br />
+<br />
+<h3>Students <button (click)="addStudent()" class="btn btn-primary" style="align-self: right;">Add Student</button></h3>
+<hr color="tomato" />
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Father</th>
+    <th>Mother</th>
+    <th>DoB</th>
+    <th>Blood Group</th>
+  </tr>
+  <tr *ngFor="let student of students">
+    <td>{{student.name}}</td>
+    <td>{{student.fathername}}</td>
+    <td>{{student.mothername}}</td>
+    <td>{{student.dob}}</td>
+    <td>{{student.bgroup}}</td>
+    <td><button (click)="deleteStudent($event, student);" class="btn btn-primary"> Delete </button>
+
+  </tr>
+</table>

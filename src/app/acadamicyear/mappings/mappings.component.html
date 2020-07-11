@@ -1,0 +1,49 @@
+<br />
+<ul class="nav nav-tabs nav-justified">
+    <li>
+        <a class="btn btn-primary" data-toggle="tab" (click)="opentab(1);" role="tab" >Map Classes to Acadamic Year</a>
+    </li>
+    <li>
+        <a class="btn btn-success" data-toggle="tab" (click)="opentab(2);" role="tab">Map Subjects to classes</a>
+    </li>
+    <li>
+        <a class="btn btn-warning" data-toggle="tab" (click)="opentab(3);" role="tab">Map Teachers to Subjects</a>
+    </li>
+
+
+</ul>
+
+<hr color="red" />
+<br />
+<div class="tab-content" *ngIf="tabno===1">
+  <!--Panel 1-->
+    <h4>Add Classes to Acadamic Year</h4>
+    <table class="table table-inverse"><tr><td>
+    <form [formGroup]="myMForm" novalidate (submit)="saveMapping();">
+      <div>
+        <label>Select Acadamic Year</label>
+        <select class="form-control" formControlName="ayear" #ayear (change)="loadData($event.target.value);">
+          <option *ngFor="let ay of layear" value="{{ay.name}}"> {{ay.name}}</option>
+        </select>
+
+      </div>
+      <br />
+      <div *ngIf="acyear">
+        <h6>Add classes to {{acyear}}</h6>
+        <select class="form-control" formControlName="ayclasses" #ayclasses multiple style="height: 250px;">
+          <option *ngFor="let ayc of localclasses" value="{{ayc.name}}"> {{ayc.name}}</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Update Classes</button>
+      </div>
+    </form>
+    </td><td><div *ngIf="acyear">
+    <h6>Added classes for {{acyear}}</h6>
+    <table class="table table-striped" *ngFor="let clas of ayclasses">
+      <tr *ngFor="let c of clas.classes">
+        <td>{{c}}</td>
+      </tr>
+    </table></div>
+    </td></tr></table>
+    </div>
+
+

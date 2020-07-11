@@ -1,0 +1,72 @@
+
+
+<br /><br />
+<div class="container-fluid panel panel-primary">
+    <div class="panel-heading">
+      <h3>Add Student</h3>
+    </div>
+    <div class="panel-body jumbotron">
+      <form [formGroup]="myForm" novalidate (submit)="SaveStudent()">
+        <table class="table"><tr><td>
+            <div class="form-group">
+                <label class="col-md-8">Name</label>
+                <input type="text" class="form-control" [(ngModel)]="student.name" formControlName="name" #student.name />
+              </div>
+              <div *ngIf="myForm.controls['name'].invalid && (myForm.controls['name'].dirty || myForm.controls['name'].touched)" class="alert alert-danger">
+                <div *ngIf="myForm.controls['name'].errors.required">
+                  Name is required.
+                </div>
+              </div>
+        <div class="form-group">
+            <label class="col-md-8">Father Name</label>
+            <input type="text" class="form-control" [(ngModel)]="student.fathername" formControlName="fathername" #student.fathername />
+          </div>
+          <div *ngIf="myForm.controls['fathername'].invalid && (myForm.controls['fathername'].dirty || myForm.controls['fathername'].touched)" class="alert alert-danger">
+            <div *ngIf="myForm.controls['fathername'].errors.required">
+             Father Name is required.
+            </div>
+          </div>
+          <div class="form-group">
+              <label class="col-md-8">Mother Name</label>
+              <input type="text" class="form-control" [(ngModel)]="student.mothername" formControlName="mothername" #student.mothername />
+            </div>
+            <div *ngIf="myForm.controls['mothername'].invalid && (myForm.controls['mothername'].dirty || myForm.controls['mothername'].touched)" class="alert alert-danger">
+              <div *ngIf="myForm.controls['mothername'].errors.required">
+                Mother Name is required.
+              </div>
+            </div>
+            </td>
+          <td>
+              <div class="form-group">
+                  <label class="col-md-8">Date of Birth</label>
+                  <input type="date" class="form-control" [(ngModel)]="student.dob" formControlName="dob" #student.dob />
+                </div>
+                <div *ngIf="myForm.controls['dob'].invalid && (myForm.controls['dob'].dirty || myForm.controls['dob'].touched)" class="alert alert-danger">
+                  <div *ngIf="myForm.controls['dob'].errors.required">
+                    DOB is required.
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-8">Blood Group</label>
+                    <select class="form-control" formControlName="bgroup" #bgroup>
+                      <option value="O Positive">O Positive</option>
+                      <option value="B positive">B Positive</option>
+                      <option value="AB positive">AB Positive</option>
+                    </select>
+                  </div>
+                  <div *ngIf="myForm.controls['bgroup'].invalid && (myForm.controls['bgroup'].dirty || myForm.controls['bgroup'].touched)" class="alert alert-danger">
+                    <div *ngIf="myForm.controls['bgroup'].errors.required">
+                      Blood Group is required.
+                    </div>
+                  </div>
+          </td>
+
+          </tr>
+          </table>
+          <div class="form-group">
+            <button type="submit" [disabled]="myForm.pristine || myForm.invalid" class="btn btn-primary">Add</button>
+          </div>
+      </form>
+    </div>
+  </div>
+

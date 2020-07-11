@@ -1,0 +1,118 @@
+<br /><br />
+<div class="container-fluid panel panel-primary">
+    <div class="panel-heading">
+      <h3>Add Teacher</h3>
+    </div>
+    <div class="panel-body">
+      <form [formGroup]="myTForm" novalidate (submit)="saveTeacher();">
+        <table class="table"><tr><td>
+        <div class="form-group">
+          <label class="col-md-8">Name</label>
+          <input type="text" class="form-control" [(ngModel)]="teacher.name" formControlName="name" #teacher.name />
+        </div>
+        <div *ngIf="myTForm.controls['name'].invalid && (myTForm.controls['name'].dirty || myTForm.controls['name'].touched)" class="alert alert-danger">
+          <div *ngIf="myTForm.controls['name'].errors.required">
+            Name is required.
+          </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-8">Father Name</label>
+            <input type="text" class="form-control" [(ngModel)]="teacher.fathername" formControlName="fathername" #teacher.fathername />
+          </div>
+          <div *ngIf="myTForm.controls['fathername'].invalid && (myTForm.controls['fathername'].dirty || myTForm.controls['fathername'].touched)" class="alert alert-danger">
+            <div *ngIf="myTForm.controls['fathername'].errors.required">
+              Father Name is required.
+            </div>
+          </div>
+          <div class="form-group">
+              <label class="col-md-8">Qalification</label>
+              <select class="form-control" [(ngModel)]="teacher.qualification" formControlName="qualification" #teacher.qualification>
+                <option *ngFor="let q of lqualifications" value="{{q.name}}"> {{q.name}}</option>
+              </select>
+            </div>
+            <div *ngIf="myTForm.controls['qualification'].invalid && (myTForm.controls['qualification'].dirty || myTForm.controls['qualification'].touched)" class="alert alert-danger">
+              <div *ngIf="myTForm.controls['qualification'].errors.required">
+                Qualification is required.
+              </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-8">Experience</label>
+                <textarea class="form-control" [(ngModel)]="teacher.experience" formControlName="experience" #teacher.experience></textarea>
+              </div>
+              <div *ngIf="myTForm.controls['experience'].invalid && (myTForm.controls['experience'].dirty || myTForm.controls['experience'].touched)" class="alert alert-danger">
+                <div *ngIf="myTForm.controls['experience'].errors.required">
+                  Experience is required.
+                </div>
+              </div>
+            </td>
+          <td>
+              <div class="form-group">
+                  <label class="col-md-8">Date of Birth</label>
+                  <input type="date" class="form-control" [(ngModel)]="teacher.dob" formControlName="dob" #teacher.dob />
+                </div>
+                <div *ngIf="myTForm.controls['dob'].invalid && (myTForm.controls['dob'].dirty || myTForm.controls['dob'].touched)" class="alert alert-danger">
+                  <div *ngIf="myTForm.controls['dob'].errors.required">
+                    date is required.
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-8">Blood Group</label>
+                    <select class="form-control" [(ngModel)]="teacher.bgroup" formControlName="bgroup" #teacher.bgroup>
+                      <option value="O Positive">O Positive</option>
+                      <option value="B positive">B Positive</option>
+                      <option value="AB positive">AB Positive</option>
+                    </select>
+                  </div>
+                  <div *ngIf="myTForm.controls['bgroup'].invalid && (myTForm.controls['bgroup'].dirty || myTForm.controls['bgroup'].touched)" class="alert alert-danger">
+                    <div *ngIf="myTForm.controls['bgroup'].errors.required">
+                      Blood group is required.
+                    </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-md-8">Contact No</label>
+                      <input type="text" class="form-control" [(ngModel)]="teacher.contactno" formControlName="contactno" #teacher.contactno />
+                    </div>
+                    <div *ngIf="myTForm.controls['contactno'].invalid && (myTForm.controls['contactno'].dirty || myTForm.controls['contactno'].touched)" class="alert alert-danger">
+                      <div *ngIf="myTForm.controls['contactno'].errors.required">
+                        Phone no is required.
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-8">Contact Mail</label>
+                        <input type="text" class="form-control" [(ngModel)]="teacher.contactmail" formControlName="contactmail" #teacher.contactmail />
+                      </div>
+                      <div *ngIf="myTForm.controls['contactmail'].invalid && (myTForm.controls['contactmail'].dirty || myTForm.controls['contactmail'].touched)" class="alert alert-danger">
+                        <div *ngIf="myTForm.controls['contactmail'].errors.required">
+                          Email is required.
+                        </div>
+                      </div>
+          </td><td>
+              <div class="form-group">
+                  <label class="col-md-8">Address1</label>
+                  <input type="text" class="form-control" [(ngModel)]="teacher.address1" formControlName="address1" #teacher.address1 />
+                </div>
+                <div *ngIf="myTForm.controls['address1'].invalid && (myTForm.controls['address1'].dirty || myTForm.controls['address1'].touched)" class="alert alert-danger">
+                  <div *ngIf="myTForm.controls['address1'].errors.required">
+                    Address1 is required.
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-8">Address2</label>
+                    <input type="text" class="form-control" [(ngModel)]="teacher.address2" formControlName="address2" #teacher.address2 />
+                  </div>
+                  <div *ngIf="myTForm.controls['address2'].invalid && (myTForm.controls['address2'].dirty || myTForm.controls['address2'].touched)" class="alert alert-danger">
+                    <div *ngIf="myTForm.controls['address2'].errors.required">
+                      Address2 is required.
+                    </div>
+                  </div>
+
+          </td>
+
+          </tr>
+          </table>
+          <div class="form-group">
+            <button type="submit" [disabled]="myTForm.pristine || myTForm.invalid" class="btn btn-primary">Add</button>
+          </div>
+      </form>
+    </div>
+  </div>
